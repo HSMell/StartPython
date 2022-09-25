@@ -1,5 +1,6 @@
 from msilib import MSIMODIFY_INSERT_TEMPORARY
 
+# ~ type casting
 
 print('hello world'); 
 print('Hi 성준 ㅋ'); 
@@ -62,10 +63,21 @@ print(my_list);
 my_list.append('초코파이');
 print(my_list);
 
+
+
+# tuple : something doesn't change or should not change
 my_tuple = ('오예스','몽쉘');      # 읽기 전용의 리스트
 print(my_tuple);
 
-#언패킹
+# but there is a way how to change tuple
+my_tupleList = list(my_tuple); 
+my_tupleList.append('Choco4');
+my_tuple = tuple(my_tupleList);
+print('How to change tuple??')
+print(my_tuple);
+
+
+#Unpacking
 #언패킹시 튜플이아니라 리스트형태로 들어감
 numbers = (1,2,3,4,5,6,7,8,9,10);
 (one,two,*others) = numbers;
@@ -73,7 +85,7 @@ print(one);
 print(two);
 print(others);
 
-# 세트  순서가 보장되지 않음(인덱스 없음)
+# Set  순서가 보장되지 않음(인덱스 없음)
 A = {'돈까스','보쌈','제육덮밥'};
 B = {'짬뽕','초밥','제육덮밥'};
 print(A.intersection(B));       # 교집합 출력
@@ -86,10 +98,16 @@ B.remove('닭갈비');
 print(B);
 B.clear();
 print(B);
-#del B;
-# print(B);
+
+# Deduplication
+my_list.append('Choco');
+my_list.append('Choco');
+my_list.append('Choco');
+print('#Deduplication');
+print(set(my_list));
 
 # dictinary
+print('# dictinary');
 dicT = {'이름' : '김형석', '나이' : '29', '키' : '180 '};
 _dicT = {'이름' : '김형석', '나이' : 29, '키' : 180 };
 print(dicT);
@@ -104,3 +122,28 @@ print(str(_dicT['나이']) + str(_dicT['키']));
 # dictionary get, add etc
 print(dicT.get('이름'));
 print(dicT.get('별명'));
+
+dicT['나이'] = '30';
+print(dicT['나이']);
+
+dicT.update({'이름' : 'KHS','나이' : '29'});
+print(dicT);
+
+# delete Key
+dicT['age'] = '35';
+print(dicT.get('age'));
+dicT.pop('age');
+print(dicT.get('age'));
+
+# How to know Keys and Values
+print(_dicT.keys()); 
+print(_dicT.values());
+print(_dicT.items());
+
+#             list    tuple   set     dictionary
+#Sequence       O       O      X          O
+#duplication    O       O      X          X
+
+print(my_list);
+my_dic = dict.fromkeys(my_list);
+print(my_dic);
